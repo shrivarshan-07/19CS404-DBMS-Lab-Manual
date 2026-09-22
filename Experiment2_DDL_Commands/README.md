@@ -105,124 +105,214 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Insert all books from Out_of_print_books into Books
 
+Table attributes are ISBN, Title, Author, Publisher, YearPublished
 ```sql
--- Paste your SQL code below for Question 1
+INSERT INTO Books (ISBN,Title,Author,Publisher,YearPublished)
+SELECT ISBN,Title,Author,Publisher,YearPublished
+FROM Out_of_print_books;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1442" height="652" alt="image" src="https://github.com/user-attachments/assets/3e0df022-218d-429c-af2b-01aadb314071" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to Add a new column Country as text in the Student_details table.
 
+Sample table: Student_details
+
+ cid              name             type   notnull     dflt_value  pk
+---------------  ---------------  -----  ----------  ----------  ----------
+0                RollNo           int    0                       1
+1                Name             VARCH  1                       0
+2                Gender           TEXT   1                       0
+3                Subject          VARCH  0                       0
+4                MARKS            INT (  0                       0
+---
 ```sql
--- Paste your SQL code below for Question 2
+ALTER TABLE Student_details ADD COLUMN Country TEXT;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1470" height="841" alt="image" src="https://github.com/user-attachments/assets/624290cd-66fb-4f66-af0a-dea53f9b498c" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE ProjectAssignments (
+AssignmentID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+ProjectID INTEGER,
+AssignmentDate DATE NOT NULL,
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1457" height="652" alt="image" src="https://github.com/user-attachments/assets/108b81e9-a877-4eb2-9795-2bdfeea75fd7" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+In the Products table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
+
+ProductID   Name              Category    Price       Stock
+----------  ---------------   ----------  ----------  ----------
+106         Fitness Tracker   Wearables
+107         Laptop            Electronics  999.99      50
+108         Wireless Earbuds  Accessories              100
 
 ```sql
--- Paste your SQL code below for Question 4
+INSERT INTO Products (ProductID,Name,Category,Price,Stock)
+VALUES(106,'Fitness Tracker','Wearables',NULL,NULL);
+INSERT INTO Products (ProductID,Name,Category,Price,Stock)
+VALUES(107,'Laptop','Electronic',999.99,50);
+INSERT INTO Products (ProductID,Name,Category,Price,Stock)
+VALUES(108,'Wireless Earbud','Accessorie',NULL,100);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1457" height="735" alt="image" src="https://github.com/user-attachments/assets/6304e463-fcf3-4288-8eaf-066fa95daf00" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
 
 ```sql
--- Paste your SQL code below for Question 5
+ALTER TABLE employee ADD COLUMN department_id INTEGER;
+ALTER TABLE employee ADD COLUMN manager_id INTEGER DEFAULT NULL;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1461" height="751" alt="image" src="https://github.com/user-attachments/assets/eb02b21d-61cd-4708-92fd-be6ce0c1496d" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a table named Orders with the following columns:
+
+OrderID as INTEGER
+OrderDate as TEXT
+CustomerID as INTEGER
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE Orders (
+OrderID INTEGER,
+OrderDate TEXT,
+CustomerID INTEGER
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1462" height="750" alt="image" src="https://github.com/user-attachments/assets/c842fb9f-4a62-47dd-b266-0276792d31e8" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert the below data into the Student_details table, allowing the Subject and MARKS columns to take their default values.
 
+RollNo      Name          Gender      
+----------  ------------  ----------  
+204         Samuel Black  M          
+
+Note: The Subject and MARKS columns will use their default values.
 ```sql
--- Paste your SQL code below for Question 7
+INSERT INTO Student_details(RollNo,Name,Gender)
+VALUES(204,'Samuel Black','M');
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1452" height="765" alt="image" src="https://github.com/user-attachments/assets/be9f8846-4fde-4511-a3d1-aae09dd4d653" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
 
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Invoices (
+InvoiceID INTEGER PRIMARY KEY,
+InvoiceDate DATE,
+DueDate DATE CHECK (DueDate>InvoiceDate),
+Amount REAL CHECK (Amount>0)
+)
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1462" height="677" alt="image" src="https://github.com/user-attachments/assets/d58584d9-5663-4ecf-90a9-3d2dc44d82a8" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
-
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE jobs(
+job_id INT,
+job_title VARCHAR(255) DEFAULT '',
+min_salary DECIMAL(10,2) DEFAULT 8000,
+max_salary DECIMAL(10,2) DEFAULT NULL
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1472" height="637" alt="image" src="https://github.com/user-attachments/assets/ea52403f-a6c4-401e-9e2c-88cd420a10ac" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Employees with the following constraints:
+
+EmployeeID should be the primary key.
+FirstName and LastName should be NOT NULL.
+Email should be unique.
+Salary should be greater than 0.
+DepartmentID should be a foreign key referencing the Departments table.
 
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE Employees
+(
+EmployeeID INTEGER PRIMARY KEY,
+FirstName VARCHAR(50) NOT NULL,
+LastName VARCHAR(50) NOT NULL,
+Email VARCHAR(100) UNIQUE,
+Salary DECIMAL(10,2) CHECK (Salary>0),
+DepartmentID INT,
+FOREIGN KEY(DepartmentID) REFERENCES Departments(DepartmentID)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1445" height="757" alt="image" src="https://github.com/user-attachments/assets/e7e38463-71f3-4a2a-9a9b-d0fbc70c8906" />
 
+
+## grade page:
+<img width="1520" height="911" alt="image" src="https://github.com/user-attachments/assets/dc0ed505-5f19-4551-a21f-b4bd4d37fd76" />
 
 ## RESULT
 Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
