@@ -38,123 +38,128 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+How many patients have insurance coverage valid in each year?
 
+Sample table:Insurance Table
 ```sql
--- Paste your SQL code below for Question 1
+select strftime('%Y',validityperiod) as ValidityYear,count(patientid) as TotalPatients
+from Insurance group by ValidityYear;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="691" height="367" alt="Screenshot 2026-09-02 123939" src="https://github.com/user-attachments/assets/69b13ee9-9f6d-4620-8a66-0f76fdc84440" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+How many prescriptions were written by each doctor?
+
+Sample tablePrescriptions Table
 
 ```sql
--- Paste your SQL code below for Question 2
+select DoctorID, count(*) as TotalPrescriptions
+from Prescriptions group by DoctorID;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="791" height="736" alt="Screenshot 2026-09-02 124016" src="https://github.com/user-attachments/assets/a82630e5-5fbb-46c6-9274-2c3b810ba1b1" />
 
 **Question 3**
 ---
--- Paste Question 3 here
-
+How many prescriptions were written in each frequency category (e.g., once daily, twice daily)?
 ```sql
--- Paste your SQL code below for Question 3
+select Frequency, count(*) as TotalPrescriptions 
+from Prescriptions group by Frequency;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="761" height="515" alt="Screenshot 2026-09-02 124106" src="https://github.com/user-attachments/assets/d49ead2d-d15e-425b-907c-85587f63f018" />
 
 **Question 4**
 ---
--- Paste Question 4 here
-
+Write a SQL query to find the difference between the maximum and minimum price of fruits?
 ```sql
--- Paste your SQL code below for Question 4
+select MAX(price) - MIN(price) as price_diff
+from fruits;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="381" height="295" alt="Screenshot 2026-09-02 124145" src="https://github.com/user-attachments/assets/7fb29343-b55e-44fb-9590-d5610cccd6a5" />
 
 **Question 5**
 ---
--- Paste Question 5 here
-
+Write a SQL query to find the youngest employee in the company?
 ```sql
--- Paste your SQL code below for Question 5
+select  name as Employee_Name , MIN(age) as Age
+from employee;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="592" height="296" alt="Screenshot 2026-09-02 124243" src="https://github.com/user-attachments/assets/609d5d32-3eba-46f6-a135-ccc002fed523" />
 
 **Question 6**
 ---
--- Paste Question 6 here
-
+Write a SQL query to Calculate the average income of the employees with names starting with 'A': 
 ```sql
--- Paste your SQL code below for Question 6
+select avg(income) as avg_income from employee where name LIKE 'A%';
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="407" height="300" alt="Screenshot 2026-09-02 124315" src="https://github.com/user-attachments/assets/9a5be429-7017-462f-9380-c8ac85b6a7e0" />
 
 **Question 7**
 ---
--- Paste Question 7 here
-
+Write a SQL query to calculate the total number of working hours of all employees
 ```sql
--- Paste your SQL code below for Question 7
+select SUM(workhour) as "Total working hours"
+from employee1;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="507" height="302" alt="Screenshot 2026-09-02 124347" src="https://github.com/user-attachments/assets/4df5735e-edeb-41a3-8121-c63d8d72474d" />
 
 **Question 8**
 ---
--- Paste Question 8 here
-
+Write the SQL query that accomplishes the selection of average price for each category from the "products" table and includes only those products where the average price falls between 10 and 15.
 ```sql
--- Paste your SQL code below for Question 8
+select category_id, AVG(Price) from  products group by category_id having AVG(price) 
+between 10 and 15;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="577" height="323" alt="Screenshot 2026-09-02 124421" src="https://github.com/user-attachments/assets/ebf7f32f-0cb9-42ac-a82f-af33438ec136" />
 
 **Question 9**
 ---
--- Paste Question 9 here
-
+Write the SQL query that accomplishes the selection of total number of products for each category from the "products" table, and includes only those products where the minimum category ID is less than 3.
 ```sql
--- Paste your SQL code below for Question 9
+select category_id,count(product_name) from products
+group by category_id
+having MIN(category_id) <3;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="737" height="352" alt="Screenshot 2026-09-02 124504" src="https://github.com/user-attachments/assets/a674b370-de5e-4283-b91c-be0821d2bfdc" />
 
 **Question 10**
 ---
--- Paste Question 10 here
-
+Write the SQL query that achieves the selection of product names and the maximum price for each category from the "products" table, and includes only those products where the maximum price is greater than 15.
 ```sql
--- Paste your SQL code below for Question 10
+select category_id,product_name, price as Price
+from products group by category_id having MAX(Price) >15;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="817" height="370" alt="Screenshot 2026-09-02 124543" src="https://github.com/user-attachments/assets/de4c2630-cb55-49bc-88a9-2f82d5b8ff88" />
 
 
 ## RESULT
